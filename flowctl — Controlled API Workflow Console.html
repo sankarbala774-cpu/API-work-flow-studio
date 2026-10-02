@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<!-- saved from url=(0094)https://preview-%2Dapi-flow-play.lovable.app/?__lovable_receipt=mat_7rjkmmrtxe8sabjb9vrc79hm33 -->
+<html lang="en" data-tsd-source="/src/routes/__root.tsx:119:5"><head data-tsd-source="/src/routes/__root.tsx:120:7"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="./flowctl — Controlled API Workflow Console_files/styles-B39oDUuV.css" data-precedence="default"><link rel="stylesheet" href="./flowctl — Controlled API Workflow Console_files/css2" data-precedence="default"><title>flowctl — Controlled API Workflow Console</title><meta name="twitter:site" content="@Lovable"><meta name="description" content="A practice prototype for running API requests through a controlled pipeline: auth, schema validation, rate limiting, and execution — with a staged response inspector."><meta property="og:title" content="flowctl — Controlled API Workflow Console"><meta property="og:description" content="Run mock API requests through a visible control pipeline and inspect every stage."><meta property="og:type" content="website"><meta name="twitter:card" content="summary"><link rel="modulepreload" href="./flowctl — Controlled API Workflow Console_files/index-yXf2c3q4.js.download"><link rel="modulepreload" href="https://preview--api-flow-play.lovable.app/assets/routes-x_Bxvrs1.js"><link rel="icon" href="https://preview--api-flow-play.lovable.app/favicon.ico" type="image/x-icon"><link rel="preconnect" href="https://fonts.googleapis.com/"><link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="anonymous">
+<style>
+	#lovable-badge {
+		--badge-bg: #1b1b1b;
+		--badge-text: #c5c1b9;
+		--badge-text-hover: #dcdad5;
+		--badge-radius: 6px;
+		--badge-padding: 8px;
+		--badge-gap: 6px;
+		--badge-shadow: 
+			0 0 0 1px rgba(0, 0, 0, 0.88),
+			0 1px 0 0 rgba(0, 0, 0, 0.04),
+			0 2px 2px -1px rgba(0, 0, 0, 0.08),
+			0 4px 4px -2px rgba(0, 0, 0, 0.08),
+			0 8px 8px -4px rgba(0, 0, 0, 0.08),
+			0 16px 16px -8px rgba(0, 0, 0, 0.08);
+		--badge-transition-duration: 0.2s;
+		--badge-transition-easing: cubic-bezier(0.16, 1, 0.32, 1);
+		--focus-color: #575ECF;
+		--focus-offset: 2px;
+		--focus-width: 2px;
+		
+		position: fixed;
+		bottom: 12px;
+		right: 12px;
+		height: 24px;
+		display: flex;
+		align-items: center;
+		z-index: 1000000;
+		background-color: var(--badge-bg) !important;
+		color: var(--badge-text) !important;
+		border-radius: var(--badge-radius);
+		box-shadow: var(--badge-shadow) !important;
+		font-size: 12px;
+		font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+		font-weight: 400 !important;
+		text-transform: none !important;
+		font-feature-settings: normal !important;
+		transform: translateZ(0);
+		will-change: transform, opacity;
+		transition: opacity var(--badge-transition-duration) var(--badge-transition-easing);
+	}
+
+	#lovable-badge.closing {
+		opacity: 0;
+		pointer-events: none;
+	}
+
+	#lovable-badge-cta {
+		display: flex;
+		align-items: baseline;
+		gap: var(--badge-gap);
+		box-sizing: border-box;
+		padding: 4px var(--badge-padding) 0;
+		height: 100%;
+		color: inherit;
+		text-decoration: none;
+		white-space: nowrap;
+		border-radius: var(--badge-radius) 0 0 var(--badge-radius);
+		transition: 
+			background-color var(--badge-transition-duration) ease,
+			color var(--badge-transition-duration) ease,
+			transform 0.1s ease;
+	}
+
+	#lovable-badge-cta:hover {
+		background: rgba(255, 255, 255, 0.04);
+		color: var(--badge-text-hover);
+	}
+
+	#lovable-badge-cta:active {
+		transform: scale(0.98);
+	}
+
+	#lovable-badge-cta:focus {
+		outline: none;
+	}
+
+	#lovable-badge-cta:focus-visible {
+		outline: var(--focus-width) solid var(--focus-color);
+		outline-offset: var(--focus-offset);
+		z-index: 1;
+	}
+
+	#lovable-badge-text {
+		line-height: 1;
+	}
+
+	/* The wordmark baseline sits at y=12 of the 16px logo; an empty 12px box
+	   makes that the flex baseline so the text aligns to it on any system font. */
+	#lovable-badge-logo {
+		position: relative;
+		display: block;
+		width: 52px;
+		height: 12px;
+	}
+
+	#lovable-badge-logo svg {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
+	#lovable-badge-divider {
+		width: 1px;
+		height: 24px;
+		background-color: rgba(255, 255, 255, 0.04);
+		flex-shrink: 0;
+	}
+
+	#lovable-badge-close {
+		width: 24px;
+		height: 24px;
+		min-width: 24px;
+		min-height: 24px;
+		cursor: pointer;
+		background: none;
+		border: none;
+		padding: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 0 var(--badge-radius) var(--badge-radius) 0;
+		flex-shrink: 0;
+		transition: 
+			background-color var(--badge-transition-duration) ease,
+			transform 0.1s ease;
+	}
+
+	#lovable-badge-close:hover {
+		background: rgba(255, 255, 255, 0.04);
+	}
+
+	#lovable-badge-close:active {
+		transform: scale(0.92);
+	}
+
+	#lovable-badge-close:focus {
+		outline: none;
+	}
+
+	#lovable-badge-close:focus-visible {
+		outline: var(--focus-width) solid var(--focus-color);
+		outline-offset: calc(var(--focus-offset) * -1);
+		z-index: 1;
+	}
+
+	#lovable-badge-close svg path {
+		fill: var(--badge-text);
+		transition: fill var(--badge-transition-duration) ease;
+	}
+
+	#lovable-badge-close:hover svg path {
+		fill: var(--badge-text-hover);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		#lovable-badge,
+		#lovable-badge-cta,
+		#lovable-badge-close,
+		#lovable-badge-close svg path {
+			transition: none;
+		}
+		
+		#lovable-badge-cta:active,
+		#lovable-badge-close:active {
+			transform: none;
+		}
+	}
+
+	@media (prefers-contrast: high) {
+		#lovable-badge {
+			--badge-bg: #000;
+			--badge-text: #fff;
+			--badge-text-hover: #fff;
+			border: 2px solid currentColor;
+		}
+		
+		#lovable-badge-cta:focus-visible,
+		#lovable-badge-close:focus-visible {
+			outline-width: 3px;
+		}
+	}
+</style>
+<meta name="twitter:title" content="flowctl — Controlled API Workflow Console"><meta name="twitter:description" content="Run mock API requests through a visible control pipeline and inspect every stage."><meta property="og:image" content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/lovp_3j7ptkp1yk9xsvt02kszf3nagy/8a51f7cc73715149598f291e4084d3ff_1790948552573.png"><meta name="twitter:image" content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/lovp_3j7ptkp1yk9xsvt02kszf3nagy/8a51f7cc73715149598f291e4084d3ff_1790948552573.png"></head><body data-tsd-source="/src/routes/__root.tsx:123:7"><!--$--><div class="min-h-screen bg-background text-foreground" data-tsd-source="/src/routes/index.tsx:281:5"><header class="flex items-center justify-between border-b border-border px-6 py-4" data-tsd-source="/src/routes/index.tsx:283:7"><div class="flex items-center gap-3" data-tsd-source="/src/routes/index.tsx:284:9"><span class="grid size-8 place-items-center rounded-md bg-primary font-mono text-sm font-bold text-primary-foreground" data-tsd-source="/src/routes/index.tsx:285:11">ƒ</span><span class="text-lg font-semibold tracking-tight" data-tsd-source="/src/routes/index.tsx:288:11">flowctl</span><span class="rounded-full bg-secondary px-2 py-0.5 font-mono text-[11px] text-muted-foreground ring-1 ring-border" data-tsd-source="/src/routes/index.tsx:289:11">practice prototype</span></div><div class="flex items-center gap-3" data-tsd-source="/src/routes/index.tsx:293:9"><a href="https://www.linkedin.com/in/your-handle" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" class="text-muted-foreground transition-colors hover:text-foreground" data-tsd-source="/src/routes/index.tsx:294:11"><svg viewBox="0 0 24 24" fill="currentColor" class="size-4" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:301:13"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z" data-tsd-source="/src/routes/index.tsx:302:15"></path></svg></a><a href="https://github.com/your-handle" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile" class="text-muted-foreground transition-colors hover:text-foreground" data-tsd-source="/src/routes/index.tsx:305:11"><svg viewBox="0 0 24 24" fill="currentColor" class="size-4" aria-hidden="true" data-tsd-source="/src/routes/index.tsx:312:13"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.72-1.54-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 2.87-.39c.97 0 1.95.13 2.87.39 2.19-1.49 3.15-1.18 3.15-1.18.62 1.59.23 2.76.11 3.05.74.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.67.41.35.77 1.05.77 2.12 0 1.53-.01 2.76-.01 3.14 0 .3.2.67.8.55A11.52 11.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z" data-tsd-source="/src/routes/index.tsx:313:15"></path></svg></a><a class="hidden font-mono text-xs text-muted-foreground transition-colors hover:text-foreground sm:block" data-tsd-source="/src/routes/index.tsx:316:11" href="https://preview--api-flow-play.lovable.app/request">request form →</a><span class="hidden font-mono text-xs text-muted-foreground sm:block" data-tsd-source="/src/routes/index.tsx:322:11">mock only · no network</span><span class="inline-flex items-center gap-2 rounded-full bg-panel px-3 py-1 ring-1 ring-border" data-tsd-source="/src/routes/index.tsx:325:11"><i class="size-1.5 rounded-full bg-pass animate-pulse-dot" data-tsd-source="/src/routes/index.tsx:326:13"></i><span class="font-mono text-[11px] text-muted-foreground" data-tsd-source="/src/routes/index.tsx:327:13">sandbox</span></span></div></header><main class="mx-auto grid max-w-[1400px] gap-6 px-6 py-6 lg:grid-cols-[minmax(0,400px)_minmax(0,1fr)]" data-tsd-source="/src/routes/index.tsx:332:7"><section class="flex flex-col gap-5" data-tsd-source="/src/routes/index.tsx:334:9"><div class="rounded-xl bg-panel p-5 ring-1 ring-border" data-tsd-source="/src/routes/index.tsx:335:11"><div class="mb-4 flex items-center justify-between" data-tsd-source="/src/routes/index.tsx:336:13"><span class="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground" data-tsd-source="/src/routes/index.tsx:337:15">01 · request</span><span class="font-mono text-[10px] text-muted-foreground" data-tsd-source="/src/routes/index.tsx:340:15">builder</span></div><label class="mb-2 block font-mono text-[11px] uppercase tracking-[0.15em] text-muted-foreground" data-tsd-source="/src/routes/index.tsx:343:13">endpoint</label><div class="flex flex-col gap-2" data-tsd-source="/src/routes/index.tsx:346:13"><button class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-left font-mono text-sm ring-1 transition-colors bg-transparent text-muted-foreground ring-border hover:bg-panel-2/60 hover:text-foreground" data-tsd-source="/src/routes/index.tsx:348:17"><span class="rounded px-1.5 py-0.5 text-[10px] font-semibold ring-1 bg-pass/15 text-pass ring-pass/30" data-tsd-source="/src/routes/index.tsx:358:19">GET</span>/v2/users</button><button class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-left font-mono text-sm ring-1 transition-colors bg-panel-2 text-foreground ring-primary/40" data-tsd-source="/src/routes/index.tsx:348:17"><span class="rounded px-1.5 py-0.5 text-[10px] font-semibold ring-1 bg-hold/15 text-hold ring-hold/30" data-tsd-source="/src/routes/index.tsx:358:19">POST</span>/v2/orders</button><button class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-left font-mono text-sm ring-1 transition-colors bg-transparent text-muted-foreground ring-border hover:bg-panel-2/60 hover:text-foreground" data-tsd-source="/src/routes/index.tsx:348:17"><span class="rounded px-1.5 py-0.5 text-[10px] font-semibold ring-1 bg-foreground/10 text-foreground ring-foreground/20" data-tsd-source="/src/routes/index.tsx:358:19">PATCH</span>/v2/users/88</button><button class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-left font-mono text-sm ring-1 transition-colors bg-transparent text-muted-foreground ring-border hover:bg-panel-2/60 hover:text-foreground" data-tsd-source="/src/routes/index.tsx:348:17"><span class="rounded px-1.5 py-0.5 text-[10px] font-semibold ring-1 bg-fail/15 text-fail ring-fail/30" data-tsd-source="/src/routes/index.tsx:358:19">DELETE</span>/v2/keys/k_77</button></div><label class="mb-2 mt-5 block font-mono text-[11px] uppercase tracking-[0.15em] text-muted-foreground" data-tsd-source="/src/routes/index.tsx:368:13">body <span class="normal-case tracking-normal" data-tsd-source="/src/routes/index.tsx:369:20">(try breaking the JSON)</span></label><textarea spellcheck="false" rows="6" class="w-full resize-none rounded-lg bg-background p-3 font-mono text-[13px] leading-relaxed text-foreground ring-1 outline-none transition-shadow focus:ring-primary/50 ring-border" placeholder="{ }" data-tsd-source="/src/routes/index.tsx:371:13">{
+  "sku": "ATL-1998",
+  "qty": 2,
+  "ship": "express"
+}</textarea><button class="mt-4 flex w-full items-center justify-center gap-2 rounded-lg bg-primary py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40" data-tsd-source="/src/routes/index.tsx:388:13">Run pipeline →</button><p class="mt-2 text-center font-mono text-[10px] text-muted-foreground" data-tsd-source="/src/routes/index.tsx:402:13">rate limit: <!-- -->5<!-- --> runs / 30s · DELETE always fails auth</p></div><div class="rounded-xl bg-panel p-5 ring-1 ring-border" data-tsd-source="/src/routes/index.tsx:408:11"><div class="mb-3 font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground" data-tsd-source="/src/routes/index.tsx:409:13">history</div><div class="flex flex-col gap-1.5" data-tsd-source="/src/routes/index.tsx:412:13"><div class="flex items-center gap-3 rounded-lg px-2 py-2 ring-1 ring-border" data-tsd-source="/src/routes/index.tsx:414:17"><span class="font-mono text-[10px] font-semibold text-pass" data-tsd-source="/src/routes/index.tsx:418:19">GET</span><span class="flex-1 truncate font-mono text-[12px] text-foreground/80" data-tsd-source="/src/routes/index.tsx:421:19">/v2/users?role=admin</span><span class="font-mono text-[11px] font-semibold text-pass" data-tsd-source="/src/routes/index.tsx:424:19">200</span><span class="font-mono text-[10px] text-muted-foreground" data-tsd-source="/src/routes/index.tsx:431:19">41<!-- -->ms</span></div><div class="flex items-center gap-3 rounded-lg px-2 py-2 ring-1 ring-border" data-tsd-source="/src/routes/index.tsx:414:17"><span class="font-mono text-[10px] font-semibold text-hold" data-tsd-source="/src/routes/index.tsx:418:19">POST</span><span class="flex-1 truncate font-mono text-[12px] text-foreground/80" data-tsd-source="/src/routes/index.tsx:421:19">/v2/orders</span><span class="font-mono text-[11px] font-semibold text-fail" data-tsd-source="/src/routes/index.tsx:424:19">422</span><span class="font-mono text-[10px] text-muted-foreground" data-tsd-source="/src/routes/index.tsx:431:19">19<!-- -->ms</span></div><div class="flex items-center gap-3 rounded-lg px-2 py-2 ring-1 ring-border" data-tsd-source="/src/routes/index.tsx:414:17"><span class="font-mono text-[10px] font-semibold text-foreground" data-tsd-source="/src/routes/index.tsx:418:19">PATCH</span><span class="flex-1 truncate font-mono text-[12px] text-foreground/80" data-tsd-source="/src/routes/index.tsx:421:19">/v2/users/88</span><span class="font-mono text-[11px] font-semibold text-pass" data-tsd-source="/src/routes/index.tsx:424:19">200</span><span class="font-mono text-[10px] text-muted-foreground" data-tsd-source="/src/routes/index.tsx:431:19">58<!-- -->ms</span></div></div></div></section><section class="flex flex-col gap-5" data-tsd-source="/src/routes/index.tsx:439:9"><div class="rounded-xl bg-panel p-5 ring-1 ring-border" data-tsd-source="/src/routes/index.tsx:440:11"><div class="mb-4 flex items-center justify-between" data-tsd-source="/src/routes/index.tsx:441:13"><span class="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground" data-tsd-source="/src/routes/index.tsx:442:15">02 · control pipeline</span><span class="font-mono text-[10px] text-muted-foreground" data-tsd-source="/src/routes/index.tsx:445:15">sequential · staged</span></div><div class="grid gap-3 sm:grid-cols-2 xl:grid-cols-4" data-tsd-source="/src/routes/index.tsx:449:13"><div class="relative overflow-hidden rounded-lg p-4 ring-1 transition-colors bg-panel-2/50 ring-border" data-tsd-source="/src/routes/index.tsx:453:19"><div class="mb-3 flex items-center justify-between" data-tsd-source="/src/routes/index.tsx:472:21"><span class="font-mono text-[9px] uppercase tracking-[0.16em] text-muted-foreground" data-tsd-source="/src/routes/index.tsx:473:23">01<!-- --> <!-- -->auth check</span><span class="size-2.5 rounded-full bg-wire" data-tsd-source="/src/routes/index.tsx:476:23"></span></div><div class="font-mono text-[13px] font-semibold text-muted-foreground" data-tsd-source="/src/routes/index.tsx:490:21">IDLE</div><div class="mt-1 font-mono text-[10px] leading-snug text-muted-foreground" data-tsd-source="/src/routes/index.tsx:505:21">awaiting request</div></div><div class="relative overflow-hidden rounded-lg p-4 ring-1 transition-colors bg-panel-2/50 ring-border" data-tsd-source="/src/routes/index.tsx:453:19"><div class="mb-3 flex items-center justify-between" data-tsd-source="/src/routes/index.tsx:472:21"><span class="font-mono text-[9px] uppercase tracking-[0.16em] text-muted-foreground" data-tsd-source="/src/routes/index.tsx:473:23">02<!-- --> <!-- -->schema validation</span><span class="size-2.5 rounded-full bg-wire" data-tsd-source="/src/routes/index.tsx:476:23"></span></div><div class="font-mono text-[13px] font-semibold text-muted-foreground" data-tsd-source="/src/routes/index.tsx:490:21">IDLE</div><div class="mt-1 font-mono text-[10px] leading-snug text-muted-foreground" data-tsd-source="/src/routes/index.tsx:505:21">awaiting request</div></div><div class="relative overflow-hidden rounded-lg p-4 ring-1 transition-colors bg-panel-2/50 ring-border" data-tsd-source="/src/routes/index.tsx:453:19"><div class="mb-3 flex items-center justify-between" data-tsd-source="/src/routes/index.tsx:472:21"><span class="font-mono text-[9px] uppercase tracking-[0.16em] text-muted-foreground" data-tsd-source="/src/routes/index.tsx:473:23">03<!-- --> <!-- -->rate limit</span><span class="size-2.5 rounded-full bg-wire" data-tsd-source="/src/routes/index.tsx:476:23"></span></div><div class="font-mono text-[13px] font-semibold text-muted-foreground" data-tsd-source="/src/routes/index.tsx:490:21">IDLE</div><div class="mt-1 font-mono text-[10px] leading-snug text-muted-foreground" data-tsd-source="/src/routes/index.tsx:505:21">awaiting request</div></div><div class="relative overflow-hidden rounded-lg p-4 ring-1 transition-colors bg-panel-2/50 ring-border" data-tsd-source="/src/routes/index.tsx:453:19"><div class="mb-3 flex items-center justify-between" data-tsd-source="/src/routes/index.tsx:472:21"><span class="font-mono text-[9px] uppercase tracking-[0.16em] text-muted-foreground" data-tsd-source="/src/routes/index.tsx:473:23">04<!-- --> <!-- -->execution</span><span class="size-2.5 rounded-full bg-wire" data-tsd-source="/src/routes/index.tsx:476:23"></span></div><div class="font-mono text-[13px] font-semibold text-muted-foreground" data-tsd-source="/src/routes/index.tsx:490:21">IDLE</div><div class="mt-1 font-mono text-[10px] leading-snug text-muted-foreground" data-tsd-source="/src/routes/index.tsx:505:21">awaiting request</div></div></div></div><div class="flex-1 rounded-xl bg-panel p-5 ring-1 ring-border" data-tsd-source="/src/routes/index.tsx:515:11"><div class="mb-3 flex items-center justify-between" data-tsd-source="/src/routes/index.tsx:516:13"><span class="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground" data-tsd-source="/src/routes/index.tsx:517:15">03 · response inspector</span></div><div class="grid place-items-center rounded-lg bg-background/60 py-16 ring-1 ring-dashed ring-border" data-tsd-source="/src/routes/index.tsx:547:15"><p class="font-mono text-[12px] text-muted-foreground" data-tsd-source="/src/routes/index.tsx:548:17">run the pipeline to inspect a response</p></div></div></section></main></div><!--/$--><script type="module" async="" src="./flowctl — Controlled API Workflow Console_files/index-yXf2c3q4.js.download"></script>
+<aside id="lovable-badge" role="complementary" dir="ltr" lang="en" aria-label="Edit with Lovable">
+	<a id="lovable-badge-cta" target="_blank" href="https://lovable.dev/projects/lovp_3j7ptkp1yk9xsvt02kszf3nagy?utm_source=lovable-badge" rel="noopener nofollow" aria-label="Edit with Lovable">
+		<span id="lovable-badge-text">Edit with</span>
+		<span id="lovable-badge-logo"><svg xmlns="http://www.w3.org/2000/svg" width="52" height="16" fill="none" viewBox="0 0 52 16">
+  <path fill="#FCFBF8" fill-rule="evenodd" d="M20.318 5.25c.643 0 1.206.14 1.69.418a2.81 2.81 0 0 1 1.118 1.191c.266.513.4 1.115.4 1.807s-.134 1.296-.4 1.812a2.81 2.81 0 0 1-1.118 1.193c-.484.278-1.047.418-1.69.418s-1.208-.14-1.695-.418a2.85 2.85 0 0 1-1.125-1.193c-.262-.516-.393-1.12-.393-1.812s.131-1.294.393-1.807a2.848 2.848 0 0 1 1.125-1.191c.487-.279 1.052-.418 1.695-.418Zm0 1.425c-.27 0-.504.076-.7.228-.193.147-.34.37-.443.67-.102.295-.153.66-.153 1.093 0 .435.05.801.153 1.1.102.3.25.524.443.676.196.147.43.22.7.22.27 0 .502-.073.694-.22.193-.152.341-.375.443-.67.103-.299.153-.667.153-1.106 0-.65-.112-1.145-.337-1.481a1.08 1.08 0 0 0-.953-.51ZM32.7 5.25c.61 0 1.127.1 1.549.3.422.197.74.48.953.849.217.368.325.809.325 1.32v2.704c0 .29.02.562.062.812.044.245.108.4.19.466V12h-1.935a5.895 5.895 0 0 1-.105-.684 7.745 7.745 0 0 1-.02-.228 2.293 2.293 0 0 1-.151.203c-.205.242-.47.437-.793.584-.32.143-.685.215-1.094.215-.406 0-.77-.08-1.094-.24a1.845 1.845 0 0 1-.756-.682 1.984 1.984 0 0 1-.27-1.045c0-.606.178-1.069.535-1.388.356-.324.87-.534 1.542-.633l1.125-.16c.225-.032.403-.074.534-.123a.622.622 0 0 0 .288-.196.549.549 0 0 0 .093-.327.65.65 0 0 0-.11-.367.702.702 0 0 0-.32-.27c-.14-.07-.31-.105-.51-.105-.32 0-.576.083-.768.251-.193.164-.298.39-.314.676h-1.923c.016-.434.147-.82.393-1.155.25-.34.596-.604 1.039-.792.442-.189.954-.283 1.535-.283Zm.99 3.498a.98.98 0 0 1-.215.14 2.49 2.49 0 0 1-.584.178l-.473.092c-.315.061-.553.156-.713.283-.155.127-.233.305-.233.534 0 .23.084.412.252.547.168.135.383.203.645.203s.494-.058.694-.173c.201-.118.355-.282.461-.49.11-.21.166-.448.166-.714v-.6Zm4.526-2.375c.065-.125.138-.243.221-.349.197-.25.437-.44.719-.571.282-.135.6-.203.952-.203.528 0 .988.138 1.377.412.389.275.688.67.896 1.186.21.512.314 1.12.314 1.824 0 .7-.107 1.309-.32 1.825-.213.512-.518.906-.915 1.18-.393.275-.854.412-1.383.412-.352 0-.667-.062-.946-.184a1.832 1.832 0 0 1-.7-.554 2.2 2.2 0 0 1-.234-.383V12h-1.843V3h1.862v3.373Zm1.284.296c-.274 0-.51.085-.707.253-.192.163-.338.397-.436.7a3.376 3.376 0 0 0-.148 1.05c0 .406.05.759.148 1.058.098.299.243.53.436.694.197.164.433.246.707.246.279 0 .512-.082.7-.246.193-.164.336-.395.43-.694.099-.3.148-.652.148-1.058 0-.405-.05-.757-.147-1.056-.095-.299-.238-.53-.43-.694a1.015 1.015 0 0 0-.7-.253Zm9.416-1.419c.602 0 1.136.131 1.604.393.466.262.829.643 1.086 1.143.263.5.394 1.097.394 1.794 0 .25-.002.449-.006.596H47.51c.018.288.071.538.164.75a1.3 1.3 0 0 0 .491.596c.214.13.465.196.757.196.319 0 .583-.082.792-.246.209-.167.34-.403.393-.706h1.862a2.48 2.48 0 0 1-.485 1.235 2.54 2.54 0 0 1-1.051.805c-.439.188-.949.283-1.53.283-.655 0-1.225-.125-1.708-.375a2.672 2.672 0 0 1-1.13-1.143c-.267-.508-.4-1.137-.4-1.887 0-.712.14-1.327.418-1.843a2.86 2.86 0 0 1 1.155-1.186c.491-.27 1.051-.405 1.678-.405Zm-.044 1.345c-.274 0-.516.068-.725.203a1.29 1.29 0 0 0-.479.59 2.045 2.045 0 0 0-.132.498h2.562a1.873 1.873 0 0 0-.138-.602 1.061 1.061 0 0 0-.418-.516 1.243 1.243 0 0 0-.67-.173Z" clip-rule="evenodd"></path>
+  <path fill="#FCFBF8" d="m26.605 9.995 1.342-4.566h1.924L27.628 12h-2.07l-2.33-6.57h1.98l1.397 4.565Zm-13.013.143h2.256c1.632 0 1.421 1.837 1.418 1.861h-5.603V3h1.93v7.138Zm31.516 1.861h-1.862V3h1.862v8.999Z"></path>
+  <path fill="url(#a)" fill-rule="evenodd" d="M2.7 3c1.492 0 2.7 1.192 2.7 2.663v1.012h.9c1.49 0 2.7 1.192 2.7 2.662S7.791 12 6.3 12H0V5.663C0 4.193 1.209 3 2.7 3Z" clip-rule="evenodd"></path>
+  <defs>
+    <radialgradient id="a" cx="0" cy="0" r="1" gradientTransform="matrix(-1.54236 7.07838 -10.231 -2.15602 4.627 5.022)" gradientUnits="userSpaceOnUse">
+      <stop offset=".106" stop-color="#FE7B02"></stop>
+      <stop offset=".394" stop-color="#FE3F21"></stop>
+      <stop offset=".608" stop-color="#F858BC"></stop>
+      <stop offset=".929" stop-color="#575ECF"></stop>
+    </radialgradient>
+  </defs>
+</svg>
+
+</span>
+	</a>
+	
+	<span id="lovable-badge-divider" aria-hidden="true"></span>
+	
+	<button id="lovable-badge-close" aria-label="Dismiss" title="Dismiss" type="button">
+		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16" aria-hidden="true">
+			<path d="M10.646 4.646a.5.5 0 1 1 .707.708L8.707 8l2.646 2.646a.5.5 0 1 1-.707.707L8 8.707l-2.646 2.646a.5.5 0 1 1-.708-.707L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708L8 7.293l2.646-2.647Z"></path>
+		</svg>
+	</button>
+</aside>
+<script>
+	(() => {
+		if (window.self !== window.top || navigator.userAgent.includes('puppeteer')) {
+			const badge = document.querySelector('#lovable-badge');
+			if (badge) {
+				badge.style.display = 'none';
+			}
+			return;
+		}
+
+		const closeButton = document.querySelector('#lovable-badge-close');
+		if (closeButton) {
+			closeButton.addEventListener('click', function(event) {
+				event.preventDefault();
+				event.stopPropagation();
+				const badge = document.querySelector('#lovable-badge');
+				if (badge) {
+					badge.classList.add('closing');
+					setTimeout(function() {
+						if (badge) {
+							badge.style.display = 'none';
+						}
+					}, 240);
+				}
+			});
+		}
+	})();
+</script>
+<script src="./flowctl — Controlled API Workflow Console_files/lovable.js.download" type="module"></script><div class="extension-embed-container"><template shadowrootmode="open"><div id="extension-root" data-type="floater-button"><div id="app-container"><div class="fixed -translate-y-1/2 right-0" style="top: 538px; z-index: 100000000;"><button class="bg-black p-[0px] rounded-[2px] h-[50px] w-[50px] flex justify-center items-center"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-[33px] h-[33px]"><g clip-path="url(#clip0_2794_31114)"><path d="M26.6953 63.3228C25.3832 63.1686 23.7066 62.9716 22.8915 61.8145C22.6377 61.4542 22.9586 61.0238 23.3992 61.0238H31.0344C35.1711 61.0238 35.3322 54.1353 34.813 51.2942C31.9128 35.4328 3.61323 36.5434 5.68443 56.1871C6.67767 65.6054 16.7983 70.0929 25.2432 67.5469C26.5488 67.153 29.9843 65.3227 28.397 63.7506C28.136 63.4921 27.481 63.4151 26.6953 63.3228Z" fill="white"></path><circle cx="19.7145" cy="21.4285" r="30.5714" fill="black"></circle><path d="M26.2609 29.2789C24.9489 29.1247 23.2723 28.9277 22.4573 27.7705C22.2036 27.4102 22.5244 26.9798 22.9651 26.9798H30.5998C34.7362 26.9798 34.8974 20.0909 34.3782 17.2496C31.4781 1.38727 3.18024 2.49791 5.25132 22.1428C6.2445 31.5617 16.3645 36.0494 24.8089 33.5033C26.1144 33.1094 29.5498 31.2789 27.9626 29.7068C27.7015 29.4482 27.0466 29.3712 26.2609 29.2789Z" fill="white"></path><path d="M20.9599 20.7807C20.9599 20.7809 20.9598 20.781 20.9597 20.7811C20.3777 21.3606 18.7551 21.3408 18.4623 20.3548C18.3175 19.8669 18.2965 15.6269 18.4422 15.2035C18.7771 14.2331 20.9122 14.3518 21.2646 15.5119C21.4808 16.2238 21.4337 20.3073 20.96 20.7804C20.9599 20.7805 20.9599 20.7806 20.9599 20.7807Z" fill="black"></path></g><defs><clippath id="clip0_2794_31114"><rect width="40" height="40" rx="2.28571" fill="white"></rect></clippath></defs></svg></button></div></div></div><script src="chrome-extension://oihbmmeelledioenpfcfehdjhdnlfibj/embed_script.js"></script><link rel="stylesheet" href="https://gs-extension-embeds-final.vercel.app/static/css/main.css"></template></div></body></html>
